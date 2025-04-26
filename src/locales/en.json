@@ -1,0 +1,384 @@
+{
+  "sleepCyclesGuide": {
+    "index": 1,
+    "value": "Sleep Cycles Guide"
+  },
+  "recommendedSleepCycles": {
+    "title": {
+      "index": 2,
+      "value": "Recommended Sleep Cycles"
+    },
+    "intro": {
+      "index": 3,
+      "value": "SleepLoops recommends planning your sleep in multiples of 90-minute cycles."
+    },
+    "items": [
+      {
+        "index": 4,
+        "value": "• 6 cycles (9 hours): Optimal for recovery and performance enhancement"
+      },
+      {
+        "index": 5,
+        "value": "• 5 cycles (7.5 hours): Ideal for most adults to feel fully rested"
+      },
+      {
+        "index": 6,
+        "value": "• 4 cycles (6 hours): Minimum recommended for occasional use when time is limited"
+      },
+      {
+        "index": 7,
+        "value": "• 3 cycles (4.5 hours): Emergency option only - not sustainable long-term"
+      }
+    ]
+  },
+  "whySleepCyclesMatter": {
+    "title": {
+      "index": 8,
+      "value": "Why Sleep Cycles Matter"
+    },
+    "items": [
+      {
+        "index": 9,
+        "value": "• Waking up between cycles rather than during a cycle helps you feel more refreshed."
+      },
+      {
+        "index": 10,
+        "value": "• Each 90-minute cycle includes both REM and non-REM phases essential for mental and physical restoration."
+      },
+      {
+        "index": 11,
+        "value": "• Consistently getting 4-6 complete cycles improves cognitive function, memory, and immune system function."
+      },
+      {
+        "index": 12,
+        "value": "• The app adds a 15-minute buffer to account for the average time it takes to fall asleep."
+      },
+      {
+        "index": 13,
+        "value": "• Aligning with your natural circadian rhythm enhances sleep quality and cycle effectiveness."
+      }
+    ]
+  },
+  "sleepPhasesExplained": {
+    "title": {
+      "index": 14,
+      "value": "Sleep Phases Explained"
+    },
+    "sections": [
+      {
+        "subtitle": {
+          "index": 15,
+          "value": "REM Sleep (Rapid Eye Movement)"
+        },
+        "items": [
+          {
+            "index": 16,
+            "value": "• Brain is highly active, similar to when awake"
+          },
+          {
+            "index": 17,
+            "value": "• Dreams primarily occur during this phase"
+          },
+          {
+            "index": 18,
+            "value": "• Critical for memory consolidation and learning"
+          },
+          {
+            "index": 19,
+            "value": "• Typically occurs more in later sleep cycles"
+          }
+        ]
+      },
+      {
+        "subtitle": {
+          "index": 20,
+          "value": "Non-REM Sleep"
+        },
+        "items": [
+          {
+            "index": 21,
+            "value": "• Stage 1: Light sleep, easily awakened"
+          },
+          {
+            "index": 22,
+            "value": "• Stage 2: Body temperature drops, heart rate slows"
+          },
+          {
+            "index": 23,
+            "value": "• Stages 3-4: Deep sleep, most restorative for the body"
+          },
+          {
+            "index": 24,
+            "value": "• Physical healing, immune system strengthening, and tissue repair occur"
+          }
+        ]
+      }
+    ]
+  },
+  "ninetyMinuteCycleBreakdown": {
+    "title": {
+      "index": 25,
+      "value": "90-Minute Cycle Breakdown"
+    },
+    "items": [
+      {
+        "index": 26,
+        "value": "• 0-20 min: Light sleep (Stage 1-2)"
+      },
+      {
+        "index": 27,
+        "value": "• 20-70 min: Deep sleep (Stages 3-4)"
+      },
+      {
+        "index": 28,
+        "value": "• 70-90 min: REM sleep"
+      },
+      {
+        "index": 29,
+        "value": "• First cycles of the night contain more deep sleep"
+      },
+      {
+        "index": 30,
+        "value": "• Later cycles contain more REM sleep"
+      }
+    ]
+  },
+  "nappingStrategy": {
+    "title": {
+      "index": 31,
+      "value": "Napping Strategy"
+    },
+    "items": [
+      {
+        "index": 32,
+        "value": "• Power nap (20 minutes): Boosts alertness and energy without entering deep sleep."
+      },
+      {
+        "index": 33,
+        "value": "• Full cycle nap (90 minutes): Includes all sleep stages and provides more complete rest."
+      },
+      {
+        "index": 34,
+        "value": "• Avoid 30-60 minute naps as waking during deep sleep can cause grogginess (sleep inertia)."
+      },
+      {
+        "index": 35,
+        "value": "• Schedule naps before 3pm to avoid disrupting nighttime sleep."
+      }
+    ]
+  },
+  "track": {
+    "index": 36,
+    "value": "Track"
+  },
+  "history": {
+    "index": 37,
+    "value": "History"
+  },
+  "schedule": {
+    "index": 38,
+    "value": "Schedule"
+  },
+  "historyScreen": {
+    "upcomingNotifications": {
+      "index": 39,
+      "value": "Upcoming Notifications"
+    },
+    "noUpcoming": {
+      "index": 40,
+      "value": "No upcoming notifications"
+    },
+    "cancel": {
+      "index": 41,
+      "value": "Cancel"
+    },
+    "history": {
+      "index": 42,
+      "value": "History"
+    },
+    "start": {
+      "index": 43,
+      "value": "Start"
+    },
+    "end": {
+      "index": 44,
+      "value": "End"
+    },
+    "ongoing": {
+      "index": 45,
+      "value": "Ongoing"
+    },
+    "durationHours": {
+      "index": 46,
+      "value": "Duration: %{hours} hrs"
+    },
+    "rest": {
+      "index": 47,
+      "value": "Rest"
+    },
+    "wakeOnDay": {
+      "index": 48,
+      "value": "Wake %{day}"
+    }
+  },
+  "weekdays": {
+    "Sun": {
+      "index": 49,
+      "value": "Sun"
+    },
+    "Mon": {
+      "index": 50,
+      "value": "Mon"
+    },
+    "Tue": {
+      "index": 51,
+      "value": "Tue"
+    },
+    "Wed": {
+      "index": 52,
+      "value": "Wed"
+    },
+    "Thu": {
+      "index": 53,
+      "value": "Thu"
+    },
+    "Fri": {
+      "index": 54,
+      "value": "Fri"
+    },
+    "Sat": {
+      "index": 55,
+      "value": "Sat"
+    }
+  },
+  "homeScreen": {
+    "title": {
+      "index": 56,
+      "value": "What time do you need to wake up?"
+    },
+    "suggestedBedtimes": {
+      "index": 57,
+      "value": "Suggested Bedtimes (tap to schedule):"
+    },
+    "suggestionLabel": {
+      "index": 58,
+      "value": "%{cycles} cycles: %{time}"
+    },
+    "timeToWindDown": {
+      "index": 59,
+      "value": "Time to wind down"
+    },
+    "plannedBedtime": {
+      "index": 60,
+      "value": "Your planned bedtime: %{time}"
+    },
+    "sleepReminderSetTitle": {
+      "index": 61,
+      "value": "Sleep Reminder Set"
+    },
+    "sleepReminderSetBody": {
+      "index": 62,
+      "value": "You'll be reminded at %{time}"
+    }
+  },
+  "splashScreen": {
+    "loadingLabel": {
+      "index": 63,
+      "value": "Loading SleepLoops"
+    },
+    "tagline": {
+      "index": 64,
+      "value": "Master Your Sleep Cycles"
+    },
+    "getStarted": {
+      "index": 65,
+      "value": "Get Started"
+    }
+  },
+  "surveyAlert": {
+    "title": {
+      "index": 66,
+      "value": "Survey"
+    },
+    "message": {
+      "index": 67,
+      "value": "Would you like to complete a survey?"
+    },
+    "noThanks": {
+      "index": 68,
+      "value": "No thanks"
+    },
+    "sure": {
+      "index": 69,
+      "value": "Sure"
+    }
+  },
+  "scheduleScreen": {
+    "title": {
+      "index": 70,
+      "value": "Weekly Wake-Up Plan"
+    },
+    "wakeUpTitle": {
+      "index": 71,
+      "value": "Wake Up"
+    },
+    "wakeUpBody": {
+      "index": 72,
+      "value": "Time to wake up for %{day}"
+    },
+    "set": {
+      "index": 73,
+      "value": "Set"
+    },
+    "suggestedBedtimes": {
+      "index": 74,
+      "value": "Suggested bedtimes: %{times}"
+    }
+  },
+  "tutorialScreen": {
+    "titleWelcome": {
+      "index": 75,
+      "value": "Welcome to SleepLoops"
+    },
+    "descWelcome": {
+      "index": 76,
+      "value": "Get started by scheduling your first reminder."
+    },
+    "titleTrackSleep": {
+      "index": 77,
+      "value": "Track Your Sleep"
+    },
+    "descTrackSleep": {
+      "index": 78,
+      "value": "Use the + button or weekly calendar to plan reminders."
+    },
+    "titleViewHistory": {
+      "index": 79,
+      "value": "View Your History"
+    },
+    "descViewHistory": {
+      "index": 80,
+      "value": "See past sessions and reminders here."
+    },
+    "back": {
+      "index": 81,
+      "value": "Back"
+    },
+    "next": {
+      "index": 82,
+      "value": "Next"
+    },
+    "finish": {
+      "index": 83,
+      "value": "Finish"
+    }
+  },
+  "whatTimeWakeUp": {
+    "index": 84,
+    "value": "☀️ What time do you need to wake up?"
+  },
+  "whatTimeSleep": {
+    "index": 85,
+    "value": "🌙 What time do you want to go to sleep?"
+  }
+}

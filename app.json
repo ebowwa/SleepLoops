@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "SleepLoops",
+    "slug": "sleep-loops",
+    "version": "1.0.0",
+    "icon": "./assets/AppIcon.png",
+    "sdkVersion": "52.0.0",
+    "platforms": [
+      "ios"
+    ],
+    "scheme": "sleep-loops",
+    "ios": {
+      "bundleIdentifier": "com.ebowwa.sleeploops",
+      "supportsTablet": true,
+      "icon": "./assets/AppIcon.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/AppIcon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "icon": "./assets/AppIcon.png",
+      "package": "com.ebowwa.sleeploops"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-router",
+      "expo-asset",
+      "expo-dev-client"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c93a91a3-4513-41e6-ad65-39fc28514a25"
+      }
+    }
+  }
+}
