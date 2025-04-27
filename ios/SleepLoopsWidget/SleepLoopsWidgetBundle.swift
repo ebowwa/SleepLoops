@@ -12,6 +12,7 @@ import SwiftUI
 struct SleepLoopsWidgetBundle: WidgetBundle {
     var body: some Widget {
         SleepLoopsWidget()
+        WakeTimeSuggestionsWidget()
         SleepLoopsWidgetControl()
         SleepLoopsWidgetLiveActivity()
     }

@@ -8,6 +8,7 @@
     "platforms": [
       "ios"
     ],
+    "scheme": "sleep-loops",
     "ios": {
       "bundleIdentifier": "com.ebowwa.sleeploops",
       "supportsTablet": true,
@@ -28,7 +29,9 @@
       "**/*"
     ],
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-asset",
+      "expo-dev-client"
     ],
     "extra": {
       "router": {

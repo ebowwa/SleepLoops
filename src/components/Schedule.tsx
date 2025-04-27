@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
+import { SafeAreaView, View, Text, StyleSheet, FlatList, Pressable, DeviceEventEmitter } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ExpoNotifications from 'expo-notifications';
@@ -49,6 +49,8 @@ export default function Schedule() {
     );
     // save new
     await AsyncStorage.setItem(key, JSON.stringify({ time: timeDate.getTime(), notificationId: id }));
+    // notify HistoryScreen to reload upcoming
+    DeviceEventEmitter.emit('UpcomingChanged');
   };
 
   const openPicker = (idx: number) => {

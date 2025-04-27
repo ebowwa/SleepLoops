@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,11 +12,71 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		68A342704C72BCB4DE188E50 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6814867723A07A849B8A82CE /* PrivacyInfo.xcprivacy */; };
+		766028B02DBEBE2D00F5ABEC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 766028AF2DBEBE2D00F5ABEC /* WidgetKit.framework */; };
+		766028B22DBEBE2D00F5ABEC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 766028B12DBEBE2D00F5ABEC /* SwiftUI.framework */; };
+		766028C32DBEBE3000F5ABEC /* SleepLoopsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 766028AE2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		766028F62DBEC58A00F5ABEC /* SleepLoopsClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 766028D12DBEC58700F5ABEC /* SleepLoopsClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8262C791F1254716B46D320C /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE00A788527495599C5CCB3 /* noop-file.swift */; };
 		96905EF65AED1B983A6B3ABC /* libPods-SleepLoops.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-SleepLoops.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		766028C12DBEBE3000F5ABEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 766028AD2DBEBE2D00F5ABEC;
+			remoteInfo = SleepLoopsWidgetExtension;
+		};
+		766028E32DBEC58A00F5ABEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 766028D02DBEC58700F5ABEC;
+			remoteInfo = SleepLoopsClip;
+		};
+		766028ED2DBEC58A00F5ABEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 766028D02DBEC58700F5ABEC;
+			remoteInfo = SleepLoopsClip;
+		};
+		766028F42DBEC58A00F5ABEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 766028D02DBEC58700F5ABEC;
+			remoteInfo = SleepLoopsClip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		766028C42DBEBE3000F5ABEC /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				766028C32DBEBE3000F5ABEC /* SleepLoopsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028FB2DBEC58A00F5ABEC /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				766028F62DBEC58A00F5ABEC /* SleepLoopsClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* SleepLoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepLoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +89,12 @@
 		6814867723A07A849B8A82CE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = SleepLoops/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-SleepLoops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SleepLoops.debug.xcconfig"; path = "Target Support Files/Pods-SleepLoops/Pods-SleepLoops.debug.xcconfig"; sourceTree = "<group>"; };
 		6FE00A788527495599C5CCB3 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "SleepLoops/noop-file.swift"; sourceTree = "<group>"; };
+		766028AE2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SleepLoopsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		766028AF2DBEBE2D00F5ABEC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		766028B12DBEBE2D00F5ABEC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		766028D12DBEC58700F5ABEC /* SleepLoopsClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepLoopsClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		766028E22DBEC58A00F5ABEC /* SleepLoopsClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepLoopsClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		766028EC2DBEC58A00F5ABEC /* SleepLoopsClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepLoopsClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D352CD337FB3A3BF06240 /* Pods-SleepLoops.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SleepLoops.release.xcconfig"; path = "Target Support Files/Pods-SleepLoops/Pods-SleepLoops.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = SleepLoops/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -37,12 +103,66 @@
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SleepLoops/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		766028C72DBEBE3000F5ABEC /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 766028AD2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension */;
+		};
+		766028F72DBEC58A00F5ABEC /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 766028D02DBEC58700F5ABEC /* SleepLoopsClip */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		766028B32DBEBE2D00F5ABEC /* SleepLoopsWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (766028C72DBEBE3000F5ABEC /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SleepLoopsWidget; sourceTree = "<group>"; };
+		766028D22DBEC58700F5ABEC /* SleepLoopsClip */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (766028F72DBEC58A00F5ABEC /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SleepLoopsClip; sourceTree = "<group>"; };
+		766028E52DBEC58A00F5ABEC /* SleepLoopsClipTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SleepLoopsClipTests; sourceTree = "<group>"; };
+		766028EF2DBEC58A00F5ABEC /* SleepLoopsClipUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SleepLoopsClipUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				96905EF65AED1B983A6B3ABC /* libPods-SleepLoops.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028AB2DBEBE2D00F5ABEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				766028B22DBEBE2D00F5ABEC /* SwiftUI.framework in Frameworks */,
+				766028B02DBEBE2D00F5ABEC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028CE2DBEC58700F5ABEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028DF2DBEC58A00F5ABEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028E92DBEC58A00F5ABEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +191,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-SleepLoops.a */,
+				766028AF2DBEBE2D00F5ABEC /* WidgetKit.framework */,
+				766028B12DBEBE2D00F5ABEC /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -87,6 +209,10 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* SleepLoops */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				766028B32DBEBE2D00F5ABEC /* SleepLoopsWidget */,
+				766028D22DBEC58700F5ABEC /* SleepLoopsClip */,
+				766028E52DBEC58A00F5ABEC /* SleepLoopsClipTests */,
+				766028EF2DBEC58A00F5ABEC /* SleepLoopsClipUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
@@ -101,6 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* SleepLoops.app */,
+				766028AE2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension.appex */,
+				766028D12DBEC58700F5ABEC /* SleepLoopsClip.app */,
+				766028E22DBEC58A00F5ABEC /* SleepLoopsClipTests.xctest */,
+				766028EC2DBEC58A00F5ABEC /* SleepLoopsClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,15 +284,109 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
 				D835EF51ED07E832C44224AC /* [CP] Embed Pods Frameworks */,
+				766028C42DBEBE3000F5ABEC /* Embed Foundation Extensions */,
+				766028FB2DBEC58A00F5ABEC /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				766028C22DBEBE3000F5ABEC /* PBXTargetDependency */,
+				766028F52DBEC58A00F5ABEC /* PBXTargetDependency */,
 			);
 			name = SleepLoops;
 			productName = SleepLoops;
 			productReference = 13B07F961A680F5B00A75B9A /* SleepLoops.app */;
 			productType = "com.apple.product-type.application";
+		};
+		766028AD2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 766028C82DBEBE3000F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsWidgetExtension" */;
+			buildPhases = (
+				766028AA2DBEBE2D00F5ABEC /* Sources */,
+				766028AB2DBEBE2D00F5ABEC /* Frameworks */,
+				766028AC2DBEBE2D00F5ABEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				766028B32DBEBE2D00F5ABEC /* SleepLoopsWidget */,
+			);
+			name = SleepLoopsWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = SleepLoopsWidgetExtension;
+			productReference = 766028AE2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		766028D02DBEC58700F5ABEC /* SleepLoopsClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 766028F82DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClip" */;
+			buildPhases = (
+				766028CD2DBEC58700F5ABEC /* Sources */,
+				766028CE2DBEC58700F5ABEC /* Frameworks */,
+				766028CF2DBEC58700F5ABEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				766028D22DBEC58700F5ABEC /* SleepLoopsClip */,
+			);
+			name = SleepLoopsClip;
+			packageProductDependencies = (
+			);
+			productName = SleepLoopsClip;
+			productReference = 766028D12DBEC58700F5ABEC /* SleepLoopsClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		766028E12DBEC58A00F5ABEC /* SleepLoopsClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 766028FC2DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClipTests" */;
+			buildPhases = (
+				766028DE2DBEC58A00F5ABEC /* Sources */,
+				766028DF2DBEC58A00F5ABEC /* Frameworks */,
+				766028E02DBEC58A00F5ABEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				766028E42DBEC58A00F5ABEC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				766028E52DBEC58A00F5ABEC /* SleepLoopsClipTests */,
+			);
+			name = SleepLoopsClipTests;
+			packageProductDependencies = (
+			);
+			productName = SleepLoopsClipTests;
+			productReference = 766028E22DBEC58A00F5ABEC /* SleepLoopsClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		766028EB2DBEC58A00F5ABEC /* SleepLoopsClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 766028FF2DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClipUITests" */;
+			buildPhases = (
+				766028E82DBEC58A00F5ABEC /* Sources */,
+				766028E92DBEC58A00F5ABEC /* Frameworks */,
+				766028EA2DBEC58A00F5ABEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				766028EE2DBEC58A00F5ABEC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				766028EF2DBEC58A00F5ABEC /* SleepLoopsClipUITests */,
+			);
+			name = SleepLoopsClipUITests;
+			packageProductDependencies = (
+			);
+			productName = SleepLoopsClipUITests;
+			productReference = 766028EC2DBEC58A00F5ABEC /* SleepLoopsClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -170,10 +394,25 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1250;
+					};
+					766028AD2DBEBE2D00F5ABEC = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					766028D02DBEC58700F5ABEC = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					766028E12DBEC58A00F5ABEC = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 766028D02DBEC58700F5ABEC;
+					};
+					766028EB2DBEC58A00F5ABEC = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 766028D02DBEC58700F5ABEC;
 					};
 				};
 			};
@@ -191,6 +430,10 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* SleepLoops */,
+				766028AD2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension */,
+				766028D02DBEC58700F5ABEC /* SleepLoopsClip */,
+				766028E12DBEC58A00F5ABEC /* SleepLoopsClipTests */,
+				766028EB2DBEC58A00F5ABEC /* SleepLoopsClipUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,6 +447,34 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				68A342704C72BCB4DE188E50 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028AC2DBEBE2D00F5ABEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028CF2DBEC58700F5ABEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028E02DBEC58A00F5ABEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028EA2DBEC58A00F5ABEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +617,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		766028AA2DBEBE2D00F5ABEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028CD2DBEC58700F5ABEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028DE2DBEC58A00F5ABEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		766028E82DBEC58A00F5ABEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		766028C22DBEBE3000F5ABEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 766028AD2DBEBE2D00F5ABEC /* SleepLoopsWidgetExtension */;
+			targetProxy = 766028C12DBEBE3000F5ABEC /* PBXContainerItemProxy */;
+		};
+		766028E42DBEC58A00F5ABEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 766028D02DBEC58700F5ABEC /* SleepLoopsClip */;
+			targetProxy = 766028E32DBEC58A00F5ABEC /* PBXContainerItemProxy */;
+		};
+		766028EE2DBEC58A00F5ABEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 766028D02DBEC58700F5ABEC /* SleepLoopsClip */;
+			targetProxy = 766028ED2DBEC58A00F5ABEC /* PBXContainerItemProxy */;
+		};
+		766028F52DBEC58A00F5ABEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 766028D02DBEC58700F5ABEC /* SleepLoopsClip */;
+			targetProxy = 766028F42DBEC58A00F5ABEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
@@ -421,6 +743,326 @@
 			};
 			name = Release;
 		};
+		766028C52DBEBE3000F5ABEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SleepLoopsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SleepLoopsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		766028C62DBEBE3000F5ABEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SleepLoopsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SleepLoopsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		766028F92DBEC58A00F5ABEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SleepLoopsClip/SleepLoopsClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"SleepLoopsClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SleepLoopsClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SleepLoops;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		766028FA2DBEC58A00F5ABEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SleepLoopsClip/SleepLoopsClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"SleepLoopsClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SleepLoopsClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SleepLoops;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		766028FD2DBEC58A00F5ABEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepLoopsClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SleepLoopsClip";
+			};
+			name = Debug;
+		};
+		766028FE2DBEC58A00F5ABEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepLoopsClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SleepLoopsClip";
+			};
+			name = Release;
+		};
+		766029002DBEC58A00F5ABEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SleepLoopsClip;
+			};
+			name = Debug;
+		};
+		766029012DBEC58A00F5ABEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42R8ZPM5N8;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebowwa.sleeploops.SleepLoopsClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SleepLoopsClip;
+			};
+			name = Release;
+		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -476,10 +1118,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.76.9_@babel+core@7.26.10_@babel+preset-env@7.26.9_@babel+core@7.26.10__@types+react@18.3.20_react@18.3.1/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -534,10 +1173,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.76.9_@babel+core@7.26.10_@babel+preset-env@7.26.9_@babel+core@7.26.10__@types+react@18.3.20_react@18.3.1/node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -553,6 +1189,42 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		766028C82DBEBE3000F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				766028C52DBEBE3000F5ABEC /* Debug */,
+				766028C62DBEBE3000F5ABEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		766028F82DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				766028F92DBEC58A00F5ABEC /* Debug */,
+				766028FA2DBEC58A00F5ABEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		766028FC2DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				766028FD2DBEC58A00F5ABEC /* Debug */,
+				766028FE2DBEC58A00F5ABEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		766028FF2DBEC58A00F5ABEC /* Build configuration list for PBXNativeTarget "SleepLoopsClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				766029002DBEC58A00F5ABEC /* Debug */,
+				766029012DBEC58A00F5ABEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

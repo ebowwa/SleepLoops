@@ -1,49 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, StyleSheet, Button } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, FlatList, Text, StyleSheet, Button, DeviceEventEmitter } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { observer } from 'mobx-react-lite';
 import * as Notifications from 'expo-notifications';
 import SleepStore from '../stores/SleepStore';
 import i18n from '../i18n';
 import { Dimensions } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = width - 40;
 
 const HistoryScreen = observer(() => {
   const [upcoming, setUpcoming] = useState<{id:string; title:string; time:Date; storageKey:string}[]>([]);
+  // observe reset trigger to reload
+  const resetCount = SleepStore.resetTrigger;
 
-  useEffect(() => {
-    async function loadUpcoming() {
-      const items: {id:string; title:string; time:Date; storageKey:string}[] = [];
-      // single alarm
-      const wakeData = await AsyncStorage.getItem('wakeNotif');
-      if (wakeData) {
-        const { wake, id } = JSON.parse(wakeData);
-        items.push({ id, title: i18n.t('historyScreen.rest'), time: new Date(wake), storageKey: 'wakeNotif' });
-      }
-      // weekly schedule
-      const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-      const now = new Date();
-      for (let i = 0; i < 7; i++) {
-        const key = `schedule:${i}`;
-        const data = await AsyncStorage.getItem(key);
-        if (data) {
-          const { time, notificationId } = JSON.parse(data);
-          let delta = i - now.getDay();
-          if (delta < 0) delta += 7;
-          const next = new Date(now);
-          next.setDate(now.getDate() + delta);
-          const dt = new Date(time);
-          next.setHours(dt.getHours(), dt.getMinutes(), 0, 0);
-          items.push({ id: notificationId, title: i18n.t('historyScreen.wakeOnDay', { day: i18n.t(`weekdays.${WEEKDAYS[i]}`) }), time: next, storageKey: key });
-        }
-      }
-      items.sort((a,b) => a.time.getTime() - b.time.getTime());
-      setUpcoming(items);
+  // load upcoming notifications
+  const loadUpcoming = useCallback(async () => {
+    const items: {id:string; title:string; time:Date; storageKey:string}[] = [];
+    // single alarm
+    const wakeData = await AsyncStorage.getItem('wakeNotif');
+    if (wakeData) {
+      const { wake, id } = JSON.parse(wakeData);
+      items.push({ id, title: i18n.t('historyScreen.rest'), time: new Date(wake), storageKey: 'wakeNotif' });
     }
-    loadUpcoming();
+    // weekly schedule
+    const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const now = new Date();
+    for (let i = 0; i < 7; i++) {
+      const key = `schedule:${i}`;
+      const data = await AsyncStorage.getItem(key);
+      if (data) {
+        const { time, notificationId } = JSON.parse(data);
+        let delta = i - now.getDay();
+        if (delta < 0) delta += 7;
+        const next = new Date(now);
+        next.setDate(now.getDate() + delta);
+        const dt = new Date(time);
+        next.setHours(dt.getHours(), dt.getMinutes(), 0, 0);
+        items.push({
+          id: notificationId,
+          title: i18n.t('historyScreen.wakeOnDay', { day: i18n.t(`weekdays.${WEEKDAYS[i]}`) }),
+          time: next,
+          storageKey: key
+        });
+      }
+    }
+    items.sort((a,b) => a.time.getTime() - b.time.getTime());
+    setUpcoming(items);
   }, []);
+
+  // initial load
+  useEffect(() => {
+    loadUpcoming();
+  }, [loadUpcoming]);
+
+  // subscribe to changes when notifications are scheduled/cancelled
+  useEffect(() => {
+    const sub = DeviceEventEmitter.addListener('UpcomingChanged', loadUpcoming);
+    return () => sub.remove();
+  }, [loadUpcoming]);
+
+  // reload after settings reset
+  useEffect(() => {
+    loadUpcoming();
+  }, [resetCount, loadUpcoming]);
+
+  // reload when screen gains focus
+  useFocusEffect(
+    useCallback(() => {
+      loadUpcoming();
+    }, [loadUpcoming])
+  );
 
   const cancelUpcoming = async ({ id, storageKey }: {id:string;storageKey:string}) => {
     await Notifications.cancelScheduledNotificationAsync(id);

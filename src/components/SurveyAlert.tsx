@@ -1,28 +1,14 @@
 // components/SurveyAlert.tsx
-import React, { useEffect } from 'react';
-import { Alert, Platform } from 'react-native';
-import i18n from '../i18n';
+import React from 'react';
+import useSurveyPrompt from '../hooks/useSurveyPrompt';
 
 export default function SurveyAlert() {
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-    if (Platform.OS === 'ios') {
-      timer = setTimeout(() => {
-        Alert.alert(
-          i18n.t('surveyAlert.title'),
-          i18n.t('surveyAlert.message'),
-          [
-            { text: i18n.t('surveyAlert.noThanks'), style: 'cancel' },
-            { text: i18n.t('surveyAlert.sure'), onPress: () => {} },
-          ],
-          { cancelable: true }
-        );
-      }, 2 * 60 * 1000);
-    }
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, []);
-
+  useSurveyPrompt();
   return null;
 }
+
+// Q: on `sure` what occurs--or how to monitor/track/update user selections for further use
+// Context: Currently we send a survey popup every 2 minutes, this isnt the final implementation, but a rought start.
+// what can we do to manage the client, the user, and asking for this feedback? like if they come in and use it for 2 minutes at and we ask this isnt bad, but if two minutes later we ask again they may just quit the app, and maybe we should seclude the logic on it anyways incase they dont use the app for more than two minutes maybe we could send a notification after several days or hours of use
+// We have `https://forms.gle/YtuDnNBvxf449BQu6` which is a shortened url to the survey form (but we can include the full aswell)
+// Moving Forward: we may add other forms, we may use this in different places throughout the app, we should handle state and user interactions more structured

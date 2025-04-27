@@ -2,3 +2,4 @@ node_modules
 .expo
 .env
 pnpm-lock.yaml
+*.ipa

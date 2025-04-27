@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import * as SQLite from 'expo-sqlite';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
 
 type SleepSession = {
   id: number;
@@ -9,6 +11,8 @@ type SleepSession = {
 
 class SleepStore {
   sessions: SleepSession[] = [];
+  // incremented on reset to notify UI
+  resetTrigger = 0;
   db: SQLite.SQLiteDatabase;
 
   constructor() {
@@ -72,6 +76,31 @@ class SleepStore {
       });
     } catch (error) {
       console.error('Error ending session:', error);
+    }
+  }
+
+  /**
+   * Reset the app: cancel notifications, clear storage, reset database.
+   */
+  async resetApp() {
+    try {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    } catch (error) {
+      console.error('Error cancelling notifications:', error);
+    }
+    try {
+      await AsyncStorage.clear();
+    } catch (error) {
+      console.error('Error clearing AsyncStorage:', error);
+    }
+    try {
+      await this.db.execAsync('DROP TABLE IF EXISTS sessions;');
+      runInAction(() => { this.sessions = []; });
+      await this.init();
+      // notify observers that reset occurred
+      runInAction(() => { this.resetTrigger++; });
+    } catch (error) {
+      console.error('Error resetting database:', error);
     }
   }
 

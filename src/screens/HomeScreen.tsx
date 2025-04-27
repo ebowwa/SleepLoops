@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert, TouchableOpacity, DeviceEventEmitter } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
@@ -71,6 +71,7 @@ export default function HomeScreen() {
     });
     setNotifId(id);
     await AsyncStorage.setItem('wakeNotif', JSON.stringify({ wake: time.toISOString(), id }));
+    DeviceEventEmitter.emit('UpcomingChanged');
   };
 
   return (

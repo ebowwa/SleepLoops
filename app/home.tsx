@@ -25,6 +25,12 @@ export default function Track() {
       <TouchableOpacity onPress={handleWeekly} style={styles.weekIcon}>
         <Ionicons name="calendar-outline" size={28} color="#007AFF" />
       </TouchableOpacity>
+      {/* Settings link */}
+      <Link href="/settings" asChild>
+        <TouchableOpacity style={styles.settingsIcon}>
+          <Ionicons name="settings-outline" size={24} color="#007AFF" />
+        </TouchableOpacity>
+      </Link>
       {/* Info link to Wiki */}
       <Link href="/wiki" asChild>
         <TouchableOpacity style={styles.infoIcon}>
@@ -87,6 +93,7 @@ const styles = StyleSheet.create({
   infoIcon: { alignSelf: 'flex-end', marginTop: 60, marginRight: 16 },
   plusIcon: { position: 'absolute', top: 60, right: 56, zIndex: 10 },
   weekIcon: { position: 'absolute', top: 60, right: 96, zIndex: 10 },
+  settingsIcon: { position: 'absolute', top: 60, right: 136, zIndex: 10 },
   modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' },
   modalContent: { alignSelf: 'center', backgroundColor: '#fff', borderRadius: 8, padding: 16, maxWidth: '90%', maxHeight: '67%' },
   modalClose: { alignSelf: 'flex-end' },
