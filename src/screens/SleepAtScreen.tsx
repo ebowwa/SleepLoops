@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function SleepAtScreen() {
@@ -29,9 +29,11 @@ export default function SleepAtScreen() {
         <DateTimePicker
           value={sleepTime}
           mode="time"
-          display="spinner"
-          onChange={(_, d) => {
-            if (d) setSleepTime(d);
+          display={Platform.OS === 'android' ? 'default' : 'spinner'}
+          onChange={(event, date) => {
+            if (event.type === 'set' && date) {
+              setSleepTime(date);
+            }
             setShowPicker(false);
           }}
         />

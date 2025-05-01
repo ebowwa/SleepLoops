@@ -3,3 +3,5 @@ node_modules
 .env
 pnpm-lock.yaml
 *.ipa
+/android
+/ios

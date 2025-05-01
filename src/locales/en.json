@@ -386,16 +386,32 @@
       "index": 86,
       "value": "Settings"
     },
-    "reset": {
+    "appearance": {
       "index": 87,
+      "value": "Appearance"
+    },
+    "darkMode": {
+      "index": 88,
+      "value": "Dark Mode"
+    },
+    "useSystemTheme": {
+      "index": 89,
+      "value": "Use System Theme"
+    },
+    "data": {
+      "index": 90,
+      "value": "Data"
+    },
+    "reset": {
+      "index": 91,
       "value": "Reset App"
     },
     "confirmReset": {
-      "index": 88,
+      "index": 92,
       "value": "Are you sure you want to reset the app? This will clear all data?"
     },
     "cancel": {
-      "index": 89,
+      "index": 93,
       "value": "Cancel"
     },
     "confirm": {

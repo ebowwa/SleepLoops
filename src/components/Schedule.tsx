@@ -99,12 +99,14 @@ export default function Schedule() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.header}>{i18n.t('scheduleScreen.title')}</Text>
       <FlatList
         data={WEEKDAYS}
         contentContainerStyle={styles.listContent}
         keyExtractor={(_, idx) => idx.toString()}
+        showsVerticalScrollIndicator={true}
+        scrollEnabled={true}
         renderItem={({ item, index }) => (
           <View style={styles.itemContainer}>
             <View style={styles.dayRow}>
@@ -128,7 +130,7 @@ export default function Schedule() {
           onChange={onTimeChange}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -165,5 +167,5 @@ const styles = StyleSheet.create({
   dayLabel: { flex: 1, fontWeight: '500' },
   timeLabel: { flex: 1, textAlign: 'center', fontWeight: '500' },
   suggestion: { fontSize: 12, color: '#666', marginLeft: 10, marginTop: 8 },
-  listContent: { alignItems: 'center' },
+  listContent: { alignItems: 'center', paddingBottom: 20 },
 });

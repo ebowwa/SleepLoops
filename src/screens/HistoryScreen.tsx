@@ -7,6 +7,8 @@ import SleepStore from '../stores/SleepStore';
 import i18n from '../i18n';
 import { Dimensions } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTheme } from '../contexts/ThemeContext';
+import { getTheme } from '../styles/theme';
 
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = width - 40;
@@ -74,6 +76,9 @@ const HistoryScreen = observer(() => {
     }, [loadUpcoming])
   );
 
+  const { isDark } = useTheme();
+  const theme = getTheme(isDark);
+
   const cancelUpcoming = async ({ id, storageKey }: {id:string;storageKey:string}) => {
     await Notifications.cancelScheduledNotificationAsync(id);
     await AsyncStorage.removeItem(storageKey);
@@ -81,52 +86,60 @@ const HistoryScreen = observer(() => {
   };
 
   const renderUpcomingItem = ({ item }: {item:{id:string;title:string;time:Date; storageKey:string}}) => (
-    <View style={styles.item}>
-      <Text style={styles.upcomingText}>{item.title} @ {item.time.toLocaleString()}</Text>
-      <Button title={i18n.t('historyScreen.cancel')} onPress={() => cancelUpcoming(item)} />
+    <View style={[styles.item, { borderColor: theme.colors.border }]}>   
+      <Text style={[styles.upcomingText, { color: theme.colors.text }]}>{item.title} @ {item.time.toLocaleString()}</Text>
+      <Button title={i18n.t('historyScreen.cancel')} onPress={() => cancelUpcoming(item)} color={theme.colors.primary} />
     </View>
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>{i18n.t('historyScreen.upcomingNotifications')}</Text>
+    <View style={[styles.container, { backgroundColor: theme.colors.background }]}>   
+      <Text style={[styles.header, { color: theme.colors.headerText }]}>{i18n.t('historyScreen.upcomingNotifications')}</Text>
       {upcoming.length === 0 ? (
-        <View style={styles.placeholderCard}>
-          <View style={styles.placeholderLine} />
-          <View style={[styles.placeholderLine, { width: '60%' }]} />
+        <View style={[styles.placeholderCard, { backgroundColor: theme.colors.card }]}>      
+          <View style={[styles.placeholderLine, { backgroundColor: theme.colors.border }]} />
+          <View style={[styles.placeholderLine, { width: '60%', backgroundColor: theme.colors.border }]} />
         </View>
       ) : (
         <FlatList
           data={upcoming}
           keyExtractor={item => item.id}
           renderItem={renderUpcomingItem}
+          showsVerticalScrollIndicator={true}
+          scrollEnabled={true}
+          style={styles.upcomingList}
+          contentContainerStyle={styles.listContent}
         />
       )}
 
-      <Text style={[styles.header, { marginTop: 20 }]}>{i18n.t('historyScreen.history')}</Text>
+      <Text style={[styles.header, { marginTop: 20, color: theme.colors.headerText }]}>{i18n.t('historyScreen.history')}</Text>
       {SleepStore.sessions.length === 0 ? (
         <>
-          <View style={styles.placeholderCard}>
-            <View style={styles.placeholderLine} />
-            <View style={[styles.placeholderLine, { width: '60%' }]} />
+          <View style={[styles.placeholderCard, { backgroundColor: theme.colors.card }]}>       
+            <View style={[styles.placeholderLine, { backgroundColor: theme.colors.border }]} />
+            <View style={[styles.placeholderLine, { width: '60%', backgroundColor: theme.colors.border }]} />
           </View>
-          <View style={styles.placeholderCard}>
-            <View style={styles.placeholderLine} />
-            <View style={[styles.placeholderLine, { width: '60%' }]} />
+          <View style={[styles.placeholderCard, { backgroundColor: theme.colors.card }]}>       
+            <View style={[styles.placeholderLine, { backgroundColor: theme.colors.border }]} />
+            <View style={[styles.placeholderLine, { width: '60%', backgroundColor: theme.colors.border }]} />
           </View>
         </>
       ) : (
         <FlatList
           data={SleepStore.sessions.slice().reverse()}
           keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={true}
+          scrollEnabled={true}
+          style={styles.historyList}
+          contentContainerStyle={styles.listContent}
           renderItem={({ item }) => {
             const duration = item.end ? item.end - item.start : 0;
             const hours = (duration / (1000 * 60 * 60)).toFixed(2);
             return (
-              <View style={styles.item}>
-                <Text>{`${i18n.t('historyScreen.start')}: ${new Date(item.start).toLocaleString()}`}</Text>
-                <Text>{`${i18n.t('historyScreen.end')}: ${item.end ? new Date(item.end).toLocaleString() : i18n.t('historyScreen.ongoing')}`}</Text>
-                {item.end && <Text>{i18n.t('historyScreen.durationHours', { hours })}</Text>}
+              <View style={[styles.item, { borderColor: theme.colors.border }]}>  
+                <Text style={{ color: theme.colors.text }}>{`${i18n.t('historyScreen.start')}: ${new Date(item.start).toLocaleString()}`}</Text>
+                <Text style={{ color: theme.colors.text }}>{`${i18n.t('historyScreen.end')}: ${item.end ? new Date(item.end).toLocaleString() : i18n.t('historyScreen.ongoing')}`}</Text>
+                {item.end && <Text style={{ color: theme.colors.text }}>{i18n.t('historyScreen.durationHours', { hours })}</Text>}
               </View>
             );
           }}
@@ -139,13 +152,15 @@ const HistoryScreen = observer(() => {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, paddingTop: 100 }, 
   header: { fontSize: 24, marginBottom: 10 },
-  item: { padding: 10, borderBottomWidth: 1, borderColor: '#ccc' },
+  item: { padding: 10, borderBottomWidth: 1, width: '100%' },
   upcomingText: { fontSize: 16 },
   noneText: { fontSize: 16, color: '#ccc' },
+  upcomingList: { maxHeight: 150, width: '100%' },
+  historyList: { flex: 1, width: '100%' },
+  listContent: { paddingBottom: 20 },
   placeholderCard: {
     width: CARD_WIDTH,
     height: 80,
-    backgroundColor: '#F5F5F5',
     borderRadius: 12,
     marginBottom: 16,
     // iOS shadow
@@ -160,7 +175,6 @@ const styles = StyleSheet.create({
   },
   placeholderLine: {
     height: 12,
-    backgroundColor: '#E0E0E0',
     borderRadius: 6,
     marginBottom: 8,
     width: '80%',

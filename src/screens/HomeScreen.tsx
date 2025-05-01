@@ -98,7 +98,7 @@ export default function HomeScreen() {
           style={styles.suggestion}
           onPress={() => scheduleNotif(s.time)}
         >
-          <Text>{s.label}</Text>
+          <Text style={styles.suggestionText}>{s.label}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -106,8 +106,9 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 16 },
+  container: { alignItems: 'center', padding: 16 },
   header: { fontSize: 22, marginBottom: 12, textAlign: 'center' },
   subHeader: { fontSize: 18, marginTop: 20, marginBottom: 8 },
-  suggestion: { fontSize: 16, color: '#555', marginVertical: 4 },
+  suggestion: { marginVertical: 4 },
+  suggestionText: { fontSize: 16, color: '#555' },
 });

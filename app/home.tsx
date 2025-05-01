@@ -3,7 +3,7 @@ import HomeScreen from '../src/screens/HomeScreen';
 import SleepAtScreen from '../src/screens/SleepAtScreen';
 import Schedule from '../src/components/Schedule';
 import HistoryScreen from '../src/screens/HistoryScreen';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, SafeAreaView, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, SafeAreaView, Image, TouchableWithoutFeedback, Platform } from 'react-native';
 import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import i18n from '../src/i18n';
@@ -11,9 +11,10 @@ import i18n from '../src/i18n';
 export default function Track() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState<'choose' | 'wake' | 'sleep' | 'weekly'>('choose');
-  const [modalSize, setModalSize] = useState<{ width: number; height: number } | null>(null);
   const handleAdd = () => { setModalType('choose'); setModalVisible(true); };
   const handleWeekly = () => { setModalType('weekly'); setModalVisible(true); };
+  const openWake = () => setModalType('wake');
+  const openSleep = () => setModalType('sleep');
 
   return (
     <View style={styles.container}>
@@ -39,50 +40,30 @@ export default function Track() {
       </Link>
       {/* History & Upcoming Notifications */}
       <HistoryScreen />
-      {/* Modal showing current question and details */}
-      <Modal
-        visible={modalVisible}
-        animationType="slide"
-        transparent={false}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-          <SafeAreaView style={styles.modalOverlay}>
-            <TouchableWithoutFeedback onPress={() => {}}>
-              <View
-                style={styles.modalContent}
-                onLayout={e => {
-                  const { width, height } = e.nativeEvent.layout;
-                  if (!modalSize) {
-                    setModalSize({ width, height });
-                    console.log(`Modal content size: ${width}x${height}`);
-                  }
-                }}
-              >
-                <TouchableOpacity
-                  onPress={() => setModalVisible(false)}
-                  style={styles.modalClose}
-                >
-                  <Ionicons name="close-circle" size={28} color="#333" />
+      <Modal visible={modalVisible} animationType="slide" transparent onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+            <View style={styles.overlay} />
+          </TouchableWithoutFeedback>
+          <SafeAreaView style={[styles.modalWrapper, modalType === 'weekly' && styles.weeklyWrapper]}>
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalClose}>
+              <Ionicons name="close-circle" size={28} color="#333" />
+            </TouchableOpacity>
+            {modalType === 'choose' && (
+              <View style={styles.choiceContainer}>
+                <TouchableOpacity style={styles.choiceButton} onPress={openWake}>
+                  <Text style={styles.choiceButtonText}>{i18n.t('whatTimeWakeUp')}</Text>
                 </TouchableOpacity>
-                {/* Mode selection and content */}
-                {modalType === 'choose' && (
-                  <View style={styles.choiceContainer}>
-                    <TouchableOpacity onPress={() => setModalType('wake')} style={styles.choiceButton}>
-                      <Text style={styles.choiceButtonText}>{i18n.t('whatTimeWakeUp')}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => setModalType('sleep')} style={styles.choiceButton}>
-                      <Text style={styles.choiceButtonText}>{i18n.t('whatTimeSleep')}</Text>
-                    </TouchableOpacity>
-                  </View>
-                )}
-                {modalType === 'wake' && <HomeScreen />}
-                {modalType === 'sleep' && <SleepAtScreen />}
-                {modalType === 'weekly' && <Schedule />}
+                <TouchableOpacity style={styles.choiceButton} onPress={openSleep}>
+                  <Text style={styles.choiceButtonText}>{i18n.t('whatTimeSleep')}</Text>
+                </TouchableOpacity>
               </View>
-            </TouchableWithoutFeedback>
+            )}
+            {modalType === 'wake' && <HomeScreen />}
+            {modalType === 'sleep' && <SleepAtScreen />}
+            {modalType === 'weekly' && <Schedule />}
           </SafeAreaView>
-        </TouchableWithoutFeedback>
+        </View>
       </Modal>
     </View>
   );
@@ -94,10 +75,12 @@ const styles = StyleSheet.create({
   plusIcon: { position: 'absolute', top: 60, right: 56, zIndex: 10 },
   weekIcon: { position: 'absolute', top: 60, right: 96, zIndex: 10 },
   settingsIcon: { position: 'absolute', top: 60, right: 136, zIndex: 10 },
-  modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' },
-  modalContent: { alignSelf: 'center', backgroundColor: '#fff', borderRadius: 8, padding: 16, maxWidth: '90%', maxHeight: '67%' },
-  modalClose: { alignSelf: 'flex-end' },
-  choiceContainer: { alignItems: 'center', marginTop: 16 },
+  overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)' },
+  modalContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  modalWrapper: { backgroundColor: '#fff', borderRadius: 8, padding: 16, width: '85%', maxHeight: '80%', alignSelf: 'center' },
+  weeklyWrapper: { flex: 1, marginHorizontal: '5%', marginVertical: '10%' },
+  modalClose: { alignSelf: 'flex-end', marginBottom: 12 },
+  choiceContainer: { alignItems: 'center' },
   choiceButton: { backgroundColor: '#f0f0f0', padding: 12, borderRadius: 8, marginVertical: 8, width: '80%' },
-  choiceButtonText: { fontSize: 16, textAlign: 'center' },
+  choiceButtonText: { fontSize: 16, textAlign: 'center' }
 });

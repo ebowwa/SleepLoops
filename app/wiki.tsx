@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import PillToggle from '../src/components/PillToggle';
+import Header from '../src/components/Header';
 import I18n from '../src/i18n';
 import { Dimensions } from 'react-native';
 import { BarChart, PieChart } from 'react-native-chart-kit';
 import wikiContent from '../src/data/wikiContent';
+import { useTheme } from '../src/contexts/ThemeContext';
+import { getTheme } from '../src/styles/theme';
 
 export default function Wiki() {
   const router = useRouter();
@@ -29,15 +31,12 @@ export default function Wiki() {
   const width = Dimensions.get('window').width - 32;
   const heightBar = 180;
   const heightPie = 160;
+  const { isDark } = useTheme();
+  const theme = getTheme(isDark);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="#333" />
-        </TouchableOpacity>
-        <Text style={styles.title}>{I18n.t('sleepCyclesGuide')}</Text>
-      </View>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
+      <Header title={I18n.t('sleepCyclesGuide')} />
       <ScrollView contentContainerStyle={styles.content}>
         {wikiContent.map((section) => (
           <React.Fragment key={section.id}>
@@ -47,18 +46,18 @@ export default function Wiki() {
               onPress={() => toggleSection(section.id)}
             />
             {expandedSections[section.id] && (
-              <View style={styles.expandedContent}>
+              <View style={[styles.expandedContent, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
                 {section.blocks.map((block, idx) => {
                   switch (block.type) {
                     case 'text':
                       return (
-                        <Text key={idx} style={block.style === 'subSubheading' ? styles.subSubheading : styles.paragraph}>
+                        <Text key={idx} style={[block.style === 'subSubheading' ? styles.subSubheading : styles.paragraph, { color: theme.colors.text }]}>
                           {block.content}
                         </Text>
                       );
                     case 'list':
                       return block.items.map((item, i) => (
-                        <Text key={i} style={styles.paragraph}>{item}</Text>
+                        <Text key={i} style={[styles.paragraph, { color: theme.colors.text }]}>{item}</Text>
                       ));
                     case 'bar': {
                       const b = block;
@@ -107,8 +106,6 @@ export default function Wiki() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderColor: '#ddd' },
-  title: { fontSize: 18, fontWeight: 'bold', marginLeft: 12 },
   content: { padding: 16 },
   paragraph: { fontSize: 16, marginBottom: 12, lineHeight: 22, color: '#333' },
   subheading: { fontSize: 18, fontWeight: 'bold', marginTop: 20, marginBottom: 8, color: '#222' },
