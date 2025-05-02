@@ -5,13 +5,14 @@
     "version": "1.0.0",
     "icon": "./assets/AppIcon.png",
     "sdkVersion": "52.0.0",
-    "platforms": [
-      "ios"
-    ],
+    "platforms": ["ios"],
     "ios": {
       "bundleIdentifier": "com.ebowwa.sleeploops",
       "supportsTablet": true,
-      "icon": "./assets/AppIcon.png"
+      "icon": "./assets/AppIcon.png",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,19 +25,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "plugins": [
-      "expo-router"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-router"],
     "extra": {
-      "router": {
-        "origin": false
-      },
-      "eas": {
-        "projectId": "c93a91a3-4513-41e6-ad65-39fc28514a25"
-      }
+      "router": {"origin": false},
+      "eas": {"projectId": "c93a91a3-4513-41e6-ad65-39fc28514a25"}
     }
   }
 }

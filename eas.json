@@ -20,14 +20,14 @@
     },
     "production": {
       "autoIncrement": true,
-      "distribution": "internal",
+      "distribution": "store",
       "ios": {
         "buildConfiguration": "Release"
       }
     },
     "production-classic": {
       "autoIncrement": true,
-      "distribution": "internal",
+      "distribution": "store",
       "ios": {
         "buildConfiguration": "Release"
       }
