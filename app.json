@@ -2,7 +2,7 @@
   "expo": {
     "name": "SleepLoops",
     "slug": "sleep-loops",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icon": "./assets/AppIcon.png",
     "sdkVersion": "52.0.0",
     "platforms": ["ios"],

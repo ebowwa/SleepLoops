@@ -19,7 +19,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 
 // MARK: - Sleep Cycle Intent
 
-enum SleepCycleAction: String, AppEnum, CaseDisplayRepresentable {
+enum SleepCycleAction: String, AppEnum {
     static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Sleep Cycle Action")
     case wake
     case sleep
@@ -28,12 +28,6 @@ enum SleepCycleAction: String, AppEnum, CaseDisplayRepresentable {
         case .wake: return .init(title: "Wake Times")
         case .sleep: return .init(title: "Bed Times")
         }
-    }
-    static var caseDisplayRepresentations: [SleepCycleAction: DisplayRepresentation] {
-        [
-            .wake: .init(title: "Wake Times"),
-            .sleep: .init(title: "Bed Times")
-        ]
     }
 }
 
