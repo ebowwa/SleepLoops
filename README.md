@@ -104,14 +104,38 @@ See [Issue #3](https://github.com/ebowwa/SleepLoops/issues/3) for detailed local
 
 ## Future Direction
 
-The core concept is simple and works - it's Pomodoro for sleep. Where it goes from here isn't entirely clear yet. Potential ideas:
-- Sleep quality tracking
-- Integration with health apps
-- Smart home integrations
-- Social features for sleep accountability
-- Or maybe it stays beautifully simple
+### Current Reality Check
 
-Open to suggestions and contributions.
+The core concept works - it's Pomodoro for sleep. But after analysis ([Issue #4](https://github.com/ebowwa/SleepLoops/issues/4)), **SleepLoops gets zero organic interest** despite being in a "hot" market ($3.9B+ sleep app industry). The problem: it's a feature masquerading as a product in a market dominated by content-driven apps like Calm ($7.7M/month revenue).
+
+### Most Likely Next Step: AI-Generated Sleep Stories
+
+**The Opportunity**: Merge with the existing [Stories repo](https://github.com/ebowwa/stories) to create AI-powered bedtime stories that could genuinely disrupt Calm's model. See [Issue #5](https://github.com/ebowwa/SleepLoops/issues/5) for full technical analysis.
+
+**Why This Makes Sense**:
+- **Existing foundation**: Stories repo already has OpenAI + TTS integration
+- **Cost advantage**: Generate infinite personalized stories for ~$0.002 each vs. Calm's celebrity production costs
+- **Technical feasibility**: Can integrate in ~2 weeks
+- **Market gap**: No major player offers truly personalized AI stories
+
+**Decision Framework**:
+- **Build on SleepLoops** (faster to market, existing codebase)
+- **Or start fresh** (cleaner positioning, better branding)
+- **Focus energy elsewhere** (CleanShot gets actual organic interest)
+
+**The honest assessment**: This pivot could work, but requires significant effort in a market where we currently have zero traction. Meanwhile, other projects (CleanShot) show real product-market fit.
+
+### Alternative Paths
+
+If not pursuing AI stories:
+- **Keep as portfolio piece** - demonstrates clean React Native/Expo development
+- **Open source** - could gain developer credibility
+- **Minimal maintenance** - works as-is for the sleep cycle calculation use case
+- **Focus elsewhere** - put energy into projects with proven traction
+
+**The question**: Is it worth pivoting a zero-traction app, or better to start fresh/focus on proven winners?
+
+Open to suggestions and contributions, but being realistic about market realities.
 
 ## Contributing
 
