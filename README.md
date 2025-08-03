@@ -2,6 +2,8 @@
 
 A minimalist iOS sleep cycle tracker that helps you wake up refreshed by aligning your alarm with natural 90-minute sleep cycles.
 
+**Think of it as Pomodoro for sleep** - instead of 25-minute work blocks, it's 90-minute sleep cycles. The app calculates optimal wake times based on completing full REM cycles, so you wake up between cycles rather than during deep sleep.
+
 ## Features
 
 - **Sleep Cycle Optimization**: Calculates optimal wake times based on 90-minute REM cycles
@@ -99,6 +101,17 @@ eas build --platform ios
 ### Local Build
 
 See [Issue #3](https://github.com/ebowwa/SleepLoops/issues/3) for detailed local IPA generation instructions.
+
+## Future Direction
+
+The core concept is simple and works - it's Pomodoro for sleep. Where it goes from here isn't entirely clear yet. Potential ideas:
+- Sleep quality tracking
+- Integration with health apps
+- Smart home integrations
+- Social features for sleep accountability
+- Or maybe it stays beautifully simple
+
+Open to suggestions and contributions.
 
 ## Contributing
 
