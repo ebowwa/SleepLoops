@@ -1,43 +1,118 @@
-# Can Expo CLI generate an .ipa locally?
+# SleepLoops
 
-**No.** The core Expo CLI (`expo`) does not itself compile and archive an iOS `.ipa`—you must generate (or prebuild) a native Xcode project and then invoke Xcode’s build tools (either via `xcodebuild` or via `eas build --local`).
+A minimalist iOS sleep cycle tracker that helps you wake up refreshed by aligning your alarm with natural 90-minute sleep cycles.
 
-## Why Expo CLI alone can’t produce an `.ipa`
+## Features
 
-- **`expo build:ios` is cloud-only.**  
-  The legacy `expo build:ios` command always runs on Expo’s servers and cannot be used fully offline or locally  ([How to generate an .ipa using expo - Reddit](https://www.reddit.com/r/expo/comments/12de15v/how_to_generate_an_ipa_using_expo/?utm_source=chatgpt.com)).
+- **Sleep Cycle Optimization**: Calculates optimal wake times based on 90-minute REM cycles
+- **Smart Wake Times**: Suggests 3-6 cycle wake times from your current bedtime
+- **Notification Scheduling**: Set wake-up notifications directly from the app
+- **Sleep History**: Track your sleep patterns over time
+- **Dark Mode**: Automatic theme switching based on system preferences
+- **iOS Widgets**: Quick access to wake time suggestions from your home screen
+- **Tutorial**: Interactive onboarding to get you started
 
-- **`expo run:ios` targets simulator or device only.**  
-  `expo run:ios` will build and launch your app on a simulator or connected device, but does not create an archived `.xcarchive` or `.ipa` for distribution  ([Run EAS Build locally with local flag - Expo Documentation](https://docs.expo.dev/build-reference/local-builds/?utm_source=chatgpt.com)).
+## Tech Stack
 
-## Local alternatives
+- **React Native** with **Expo** (SDK 52)
+- **TypeScript** for type safety
+- **MobX** for state management
+- **SQLite** for local data persistence
+- **Expo Router** for navigation
+- **iOS Widgets** in Swift/SwiftUI
 
-1. **EAS Build with `--local`**  
-   You can install the EAS CLI and run:  
-   ```bash
-   eas build --platform ios --local --profile production
-   ```  
-   This will perform the same archive/export steps as the cloud service, but entirely on your Mac with Xcode installed  ([Run EAS Build locally with local flag - Expo Documentation](https://docs.expo.dev/build-reference/local-builds/?utm_source=chatgpt.com)).
+## Getting Started
 
-2. **Manual `xcodebuild`**  
-   - Use `npx expo prebuild --platform ios` (once) to generate `ios/YourApp.xcworkspace`.  
-   - Then:
-     ```bash
-     xcodebuild archive \
-       -workspace ios/YourApp.xcworkspace \
-       -scheme YourApp \
-       -configuration Release \
-       -archivePath ./build/YourApp.xcarchive
+### Prerequisites
 
-     xcodebuild -exportArchive \
-       -archivePath ./build/YourApp.xcarchive \
-       -exportOptionsPlist ./build/ExportOptions.plist \
-       -exportPath ./build/YourApp.ipa
-     ```  
-   This approach bypasses any Expo-specific build commands—Xcode handles the entire compile & archive process  ([How to build an iOS Expo App without using EAS Build - Dev Genius](https://blog.devgenius.io/how-to-build-an-ios-expo-app-without-using-eas-build-78bfc4002a0f?utm_source=chatgpt.com)).
+- Node.js 18+ 
+- iOS Simulator or physical iOS device
+- Xcode (for iOS development)
 
-### TL;DR
+### Installation
 
-- **Expo CLI alone** cannot archive an `.ipa`.  
-- Use **EAS CLI locally** (`eas build --local`) or  
-- **Prebuild + Xcode** (`xcodebuild archive` & `-exportArchive`) on your machine.
+```bash
+# Clone the repository
+git clone https://github.com/ebowwa/SleepLoops.git
+cd SleepLoops
+
+# Install dependencies
+npm install
+
+# Install iOS pods
+cd ios && pod install && cd ..
+```
+
+### Development
+
+```bash
+# Start the development server
+npm start
+
+# Run on iOS simulator
+npm run ios
+
+# Start with dev client
+npm run start:dev
+
+# Start with tunnel (for testing on physical device)
+npm run start:go
+```
+
+## Project Structure
+
+```
+SleepLoops/
+├── app/                  # Expo Router screens
+├── src/
+│   ├── components/       # React components
+│   ├── contexts/         # React contexts (Theme, etc.)
+│   ├── hooks/           # Custom React hooks
+│   ├── screens/         # Screen components
+│   ├── stores/          # MobX stores
+│   └── styles/          # Shared styles
+├── ios/
+│   ├── SleepLoops/      # iOS native code
+│   └── SleepLoopsWidget/ # iOS widget extension
+├── assets/              # Images and static assets
+└── scripts/             # Build and utility scripts
+```
+
+## Data Persistence
+
+The app uses a hybrid approach for data storage:
+
+- **SQLite**: Core sleep session data via `expo-sqlite`
+- **AsyncStorage**: User preferences, theme settings, and UI state
+
+See [Issue #2](https://github.com/ebowwa/SleepLoops/issues/2) for detailed architecture discussion.
+
+## Building for Production
+
+### Using EAS Build (Cloud)
+
+```bash
+# Build for iOS
+eas build --platform ios
+```
+
+### Local Build
+
+See [Issue #3](https://github.com/ebowwa/SleepLoops/issues/3) for detailed local IPA generation instructions.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Author
+
+**Elijah Arbee** - [@ebowwa](https://github.com/ebowwa)
+
+## Acknowledgments
+
+- Built with [Expo](https://expo.dev/)
+- Sleep cycle science based on [90-minute REM cycles](https://www.sleepfoundation.org/stages-of-sleep)
