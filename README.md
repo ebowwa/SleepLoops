@@ -13,6 +13,11 @@ A minimalist iOS sleep cycle tracker that helps you wake up refreshed by alignin
 - **Dark Mode**: Automatic theme switching based on system preferences
 - **iOS Widgets**: Quick access to wake time suggestions from your home screen
 - **Tutorial**: Interactive onboarding to get you started
+- **Automatic Sleep Detection**: Detects sleep based on device inactivity (NEW!)
+
+## TODO
+
+- [ ] **Add "Active Hours" Setting**: Allow users to define hours when they're typically awake (e.g., late-night workers) to prevent false positive sleep detection during work sessions. See [Issue #10](https://github.com/ebowwa/SleepLoops/issues/10#issuecomment-3153105900) for context.
 
 ## Tech Stack
 
