@@ -7,6 +7,7 @@ type SleepSession = {
   id: number;
   start: number;
   end: number | null;
+  autoDetected?: boolean;
 };
 
 class SleepStore {
@@ -23,20 +24,63 @@ class SleepStore {
 
   async init() {
     try {
-      await this.db.execAsync(
-        `CREATE TABLE IF NOT EXISTS sessions (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER, end INTEGER);`
+      // Check if table exists and needs migration
+      const tableInfo = await this.db.getAllAsync(
+        `PRAGMA table_info(sessions);`
       );
+      
+      if (tableInfo.length > 0) {
+        // Table exists, check if we need to add auto_detected column
+        const hasAutoDetected = tableInfo.some((col: any) => col.name === 'auto_detected');
+        
+        if (!hasAutoDetected) {
+          // Migrate existing table
+          await this.db.execAsync(
+            `ALTER TABLE sessions ADD COLUMN auto_detected INTEGER DEFAULT 0;`
+          );
+        }
+      } else {
+        // Create table with new schema
+        await this.db.execAsync(
+          `CREATE TABLE IF NOT EXISTS sessions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            start INTEGER NOT NULL, 
+            end INTEGER,
+            auto_detected INTEGER DEFAULT 0
+          );`
+        );
+      }
+      
       this.loadSessions();
     } catch (error) {
+      // Fallback: create table if any error occurs
       console.error('Database initialization error:', error);
+      try {
+        await this.db.execAsync(
+          `CREATE TABLE IF NOT EXISTS sessions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            start INTEGER NOT NULL, 
+            end INTEGER,
+            auto_detected INTEGER DEFAULT 0
+          );`
+        );
+        this.loadSessions();
+      } catch (fallbackError) {
+        console.error('Database fallback creation error:', fallbackError);
+      }
     }
   }
 
   async loadSessions() {
     try {
-      const result = await this.db.getAllAsync<SleepSession>(`SELECT * FROM sessions;`);
+      const result = await this.db.getAllAsync(`SELECT * FROM sessions;`);
       runInAction(() => {
-        this.sessions = result;
+        this.sessions = result.map((row: any) => ({
+          id: row.id,
+          start: row.start,
+          end: row.end,
+          autoDetected: row.auto_detected === 1
+        }));
       });
     } catch (error) {
       console.error('Error loading sessions:', error);
@@ -108,6 +152,69 @@ class SleepStore {
   getRecommendedWakeTimes(cycleCounts: number[] = [4, 5, 6]): number[] {
     const cycleDuration = 90 * 60 * 1000;
     return cycleCounts.map(n => Date.now() + n * cycleDuration);
+  }
+
+  // Delete a sleep session
+  async deleteSession(id: number) {
+    try {
+      await this.db.runAsync(
+        `DELETE FROM sessions WHERE id = ?;`,
+        [id]
+      );
+      runInAction(() => {
+        this.sessions = this.sessions.filter(s => s.id !== id);
+      });
+    } catch (error) {
+      console.error('Error deleting session:', error);
+    }
+  }
+
+  // Create auto-detected sleep session
+  async createAutoDetectedSession(start: number, end: number) {
+    try {
+      const result = await this.db.runAsync(
+        `INSERT INTO sessions (start, end, auto_detected) VALUES (?, ?, 1);`,
+        [start, end]
+      );
+      runInAction(() => {
+        this.sessions.push({
+          id: result.lastInsertRowId as number,
+          start,
+          end,
+          autoDetected: true
+        });
+      });
+      
+      // Notify user of auto-detected sleep
+      await this.notifyAutoDetection(start, end);
+    } catch (error) {
+      console.error('Error creating auto-detected session:', error);
+    }
+  }
+
+  async notifyAutoDetection(start: number, end: number) {
+    const duration = (end - start) / (1000 * 60 * 60);
+    const sleepTime = new Date(start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const wakeTime = new Date(end).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const hours = Math.floor(duration);
+    const minutes = Math.floor((duration % 1) * 60);
+    
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Sleep Detected! 😴',
+          body: `You slept from ${sleepTime} to ${wakeTime} (${hours}h ${minutes}m)`,
+          data: { 
+            type: 'sleep_detected',
+            sessionStart: start,
+            sessionEnd: end 
+          },
+        },
+        trigger: null, // immediate
+      });
+    } catch (error) {
+      console.error('Error sending auto-detection notification:', error);
+    }
   }
 }
 

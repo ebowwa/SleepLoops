@@ -4,6 +4,7 @@ import { Stack, useSegments } from 'expo-router';
 import SurveyAlert from '../src/components/SurveyAlert';
 import { ThemeProvider, useTheme } from '../src/contexts/ThemeContext';
 import { getTheme } from '../src/styles/theme';
+import ActivityTracker from '../src/services/ActivityTracker';
 
 function AppLayout() {
   const segments = useSegments();
@@ -21,6 +22,14 @@ function AppLayout() {
       StatusBar.setBackgroundColor(theme.colors.headerBackground);
     }
   }, [isDark, theme]);
+  
+  // Initialize activity tracking after tutorial
+  React.useEffect(() => {
+    if (showSurvey) {
+      // Force initialization by accessing the singleton
+      ActivityTracker.isTracking;
+    }
+  }, [showSurvey]);
   
   return (
     <>

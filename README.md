@@ -61,6 +61,69 @@ npm run start:dev
 npm run start:go
 ```
 
+### Running on Physical iPhone Device
+
+**Important**: Since this app includes a widget extension, you cannot use Expo Go. You need to use a development build.
+
+#### Common Issues and Solutions
+
+**Issue: Xcode Build Error - "Command PhaseScriptExecution failed"**
+```
+/usr/local/bin/node: No such file or directory
+```
+
+This happens because the Hermes build script looks for Node.js at `/usr/local/bin/node`, but on M1/M2 Macs with Homebrew, Node is installed at `/opt/homebrew/bin/node`.
+
+**Solution**: Create a `.xcode.env.local` file in the ios directory:
+```bash
+echo "export NODE_BINARY=/opt/homebrew/bin/node" > ios/.xcode.env.local
+```
+
+**Issue: "Internal inconsistency error" in Xcode**
+
+This is often related to React Native 0.76 dependency resolution issues.
+
+**Solution**: Complete clean and rebuild:
+```bash
+# Clean everything
+rm -rf ios/Pods ios/Podfile.lock ios/build ~/Library/Developer/Xcode/DerivedData/*
+
+# Reinstall pods
+cd ios && pod install && cd ..
+
+# In Xcode:
+# 1. Clean Build Folder (Shift+Cmd+K)
+# 2. Build (Cmd+B)
+# 3. Run (Cmd+R)
+```
+
+#### Alternative: Using Expo Tunnel
+
+If Xcode builds are problematic, use the tunnel approach:
+
+```bash
+# We use pnpm, not npm
+pnpm install
+
+# Start with tunnel (works even if phone is on different network)
+npx expo start --tunnel
+```
+
+This generates a QR code and URL like:
+```
+exp+sleep-loops://expo-development-client/?url=https%3A%2F%2F[random-id].exp.direct
+```
+
+On your iPhone:
+1. Open the development build (previously installed via Xcode)
+2. Enter the tunnel URL or scan the QR code
+3. The app will reload with your latest changes
+
+**Note**: The tunnel method is particularly useful when:
+- Xcode builds are failing
+- Testing on a device not on the same network
+- Rapid iteration without rebuilding in Xcode
+
 ## Project Structure
 
 ```

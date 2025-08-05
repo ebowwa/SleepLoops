@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, FlatList, Text, StyleSheet, Button, DeviceEventEmitter } from 'react-native';
+import { View, FlatList, Text, StyleSheet, Button, DeviceEventEmitter, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { observer } from 'mobx-react-lite';
 import * as Notifications from 'expo-notifications';
+import { Ionicons } from '@expo/vector-icons';
+import { Swipeable } from 'react-native-gesture-handler';
 import SleepStore from '../stores/SleepStore';
 import i18n from '../i18n';
 import { Dimensions } from 'react-native';
@@ -17,6 +19,34 @@ const HistoryScreen = observer(() => {
   const [upcoming, setUpcoming] = useState<{id:string; title:string; time:Date; storageKey:string}[]>([]);
   // observe reset trigger to reload
   const resetCount = SleepStore.resetTrigger;
+  
+  // Delete session with confirmation
+  const handleDeleteSession = (id: number, isAutoDetected: boolean) => {
+    Alert.alert(
+      i18n.t('historyScreen.deleteSession') || 'Delete Session',
+      i18n.t('historyScreen.confirmDelete') || 'Are you sure you want to delete this sleep session?',
+      [
+        { text: i18n.t('historyScreen.cancel') || 'Cancel', style: 'cancel' },
+        {
+          text: i18n.t('historyScreen.delete') || 'Delete',
+          style: 'destructive',
+          onPress: () => SleepStore.deleteSession(id),
+        },
+      ]
+    );
+  };
+  
+  // Render swipe actions
+  const renderRightActions = (id: number, isAutoDetected: boolean) => {
+    return (
+      <TouchableOpacity
+        style={styles.deleteAction}
+        onPress={() => handleDeleteSession(id, isAutoDetected)}
+      >
+        <Ionicons name="trash-outline" size={24} color="#FFFFFF" />
+      </TouchableOpacity>
+    );
+  };
 
   // load upcoming notifications
   const loadUpcoming = useCallback(async () => {
@@ -134,13 +164,60 @@ const HistoryScreen = observer(() => {
           contentContainerStyle={styles.listContent}
           renderItem={({ item }) => {
             const duration = item.end ? item.end - item.start : 0;
-            const hours = (duration / (1000 * 60 * 60)).toFixed(2);
+            const hours = Math.floor(duration / (1000 * 60 * 60));
+            const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+            const sleepTime = new Date(item.start);
+            const wakeTime = item.end ? new Date(item.end) : null;
+            
             return (
-              <View style={[styles.item, { borderColor: theme.colors.border }]}>  
-                <Text style={{ color: theme.colors.text }}>{`${i18n.t('historyScreen.start')}: ${new Date(item.start).toLocaleString()}`}</Text>
-                <Text style={{ color: theme.colors.text }}>{`${i18n.t('historyScreen.end')}: ${item.end ? new Date(item.end).toLocaleString() : i18n.t('historyScreen.ongoing')}`}</Text>
-                {item.end && <Text style={{ color: theme.colors.text }}>{i18n.t('historyScreen.durationHours', { hours })}</Text>}
-              </View>
+              <Swipeable
+                renderRightActions={() => renderRightActions(item.id, item.autoDetected || false)}
+                overshootRight={false}
+              >
+                <View style={[
+                  styles.sessionCard, 
+                  { 
+                    backgroundColor: theme.colors.card,
+                    borderLeftColor: item.autoDetected ? '#007AFF' : theme.colors.primary,
+                    borderLeftWidth: 4,
+                  }
+                ]}>
+                  <View style={styles.sessionHeader}>
+                    <View style={styles.sessionTimeInfo}>
+                      <View style={styles.timeRow}>
+                        <Ionicons name="bed-outline" size={18} color={theme.colors.text} />
+                        <Text style={[styles.timeText, { color: theme.colors.text }]}>
+                          {sleepTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </Text>
+                      </View>
+                      {wakeTime && (
+                        <View style={styles.timeRow}>
+                          <Ionicons name="sunny-outline" size={18} color={theme.colors.text} />
+                          <Text style={[styles.timeText, { color: theme.colors.text }]}>
+                            {wakeTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+                    
+                    <View style={styles.sessionDuration}>
+                      <Text style={[styles.durationText, { color: theme.colors.text }]}>
+                        {hours}h {minutes}m
+                      </Text>
+                      <Text style={[styles.dateText, { color: theme.colors.text, opacity: 0.7 }]}>
+                        {sleepTime.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })}
+                      </Text>
+                    </View>
+                  </View>
+                  
+                  {item.autoDetected && (
+                    <View style={styles.autoDetectedFooter}>
+                      <Ionicons name="analytics" size={14} color="#007AFF" />
+                      <Text style={styles.autoDetectedText}>Auto-detected</Text>
+                    </View>
+                  )}
+                </View>
+              </Swipeable>
             );
           }}
         />
@@ -178,6 +255,68 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginBottom: 8,
     width: '80%',
+  },
+  sessionCard: {
+    marginBottom: 12,
+    borderRadius: 12,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  sessionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  sessionTimeInfo: {
+    flex: 1,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  timeText: {
+    fontSize: 16,
+    marginLeft: 8,
+    fontWeight: '500',
+  },
+  sessionDuration: {
+    alignItems: 'flex-end',
+  },
+  durationText: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  dateText: {
+    fontSize: 12,
+    marginTop: 2,
+  },
+  autoDetectedFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0,122,255,0.1)',
+  },
+  autoDetectedText: {
+    fontSize: 12,
+    color: '#007AFF',
+    marginLeft: 4,
+    fontWeight: '500',
+  },
+  deleteAction: {
+    backgroundColor: '#FF3B30',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 80,
+    marginBottom: 12,
+    borderRadius: 12,
+    marginLeft: 8,
   },
 });
 

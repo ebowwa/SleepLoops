@@ -219,208 +219,236 @@
     "wakeOnDay": {
       "index": 48,
       "value": "Wake %{day}"
+    },
+    "deleteSession": {
+      "index": 49,
+      "value": "Delete Session"
+    },
+    "confirmDelete": {
+      "index": 50,
+      "value": "Are you sure you want to delete this sleep session?"
+    },
+    "delete": {
+      "index": 51,
+      "value": "Delete"
     }
   },
   "weekdays": {
     "Sun": {
-      "index": 49,
+      "index": 52,
       "value": "Sun"
     },
     "Mon": {
-      "index": 50,
+      "index": 53,
       "value": "Mon"
     },
     "Tue": {
-      "index": 51,
+      "index": 54,
       "value": "Tue"
     },
     "Wed": {
-      "index": 52,
+      "index": 55,
       "value": "Wed"
     },
     "Thu": {
-      "index": 53,
+      "index": 56,
       "value": "Thu"
     },
     "Fri": {
-      "index": 54,
+      "index": 57,
       "value": "Fri"
     },
     "Sat": {
-      "index": 55,
+      "index": 58,
       "value": "Sat"
     }
   },
   "homeScreen": {
     "title": {
-      "index": 56,
+      "index": 59,
       "value": "What time do you need to wake up?"
     },
     "suggestedBedtimes": {
-      "index": 57,
+      "index": 60,
       "value": "Suggested Bedtimes (tap to schedule):"
     },
     "suggestionLabel": {
-      "index": 58,
+      "index": 61,
       "value": "%{cycles} cycles: %{time}"
     },
     "timeToWindDown": {
-      "index": 59,
+      "index": 62,
       "value": "Time to wind down"
     },
     "plannedBedtime": {
-      "index": 60,
+      "index": 63,
       "value": "Your planned bedtime: %{time}"
     },
     "sleepReminderSetTitle": {
-      "index": 61,
+      "index": 64,
       "value": "Sleep Reminder Set"
     },
     "sleepReminderSetBody": {
-      "index": 62,
+      "index": 65,
       "value": "You'll be reminded at %{time}"
     }
   },
   "splashScreen": {
     "loadingLabel": {
-      "index": 63,
+      "index": 66,
       "value": "Loading SleepLoops"
     },
     "tagline": {
-      "index": 64,
+      "index": 67,
       "value": "Master Your Sleep Cycles"
     },
     "getStarted": {
-      "index": 65,
+      "index": 68,
       "value": "Get Started"
     }
   },
   "surveyAlert": {
     "title": {
-      "index": 66,
+      "index": 69,
       "value": "Survey"
     },
     "message": {
-      "index": 67,
+      "index": 70,
       "value": "Would you like to complete a survey?"
     },
     "noThanks": {
-      "index": 68,
+      "index": 71,
       "value": "No thanks"
     },
     "sure": {
-      "index": 69,
+      "index": 72,
       "value": "Sure"
     }
   },
   "scheduleScreen": {
     "title": {
-      "index": 70,
+      "index": 73,
       "value": "Weekly Wake-Up Plan"
     },
     "wakeUpTitle": {
-      "index": 71,
+      "index": 74,
       "value": "Wake Up"
     },
     "wakeUpBody": {
-      "index": 72,
+      "index": 75,
       "value": "Time to wake up for %{day}"
     },
     "set": {
-      "index": 73,
+      "index": 76,
       "value": "Set"
     },
     "suggestedBedtimes": {
-      "index": 74,
+      "index": 77,
       "value": "Suggested bedtimes: %{times}"
     }
   },
   "tutorialScreen": {
     "titleWelcome": {
-      "index": 75,
+      "index": 78,
       "value": "Welcome to SleepLoops"
     },
     "descWelcome": {
-      "index": 76,
+      "index": 79,
       "value": "Get started by scheduling your first reminder."
     },
     "titleTrackSleep": {
-      "index": 77,
+      "index": 80,
       "value": "Track Your Sleep"
     },
     "descTrackSleep": {
-      "index": 78,
+      "index": 81,
       "value": "Use the + button or weekly calendar to plan reminders."
     },
     "titleViewHistory": {
-      "index": 79,
+      "index": 82,
       "value": "View Your History"
     },
     "descViewHistory": {
-      "index": 80,
+      "index": 83,
       "value": "See past sessions and reminders here."
     },
     "back": {
-      "index": 81,
+      "index": 84,
       "value": "Back"
     },
     "next": {
-      "index": 82,
+      "index": 85,
       "value": "Next"
     },
     "finish": {
-      "index": 83,
+      "index": 86,
       "value": "Finish"
     }
   },
   "whatTimeWakeUp": {
-    "index": 84,
+    "index": 87,
     "value": "☀️ What time do you need to wake up?"
   },
   "whatTimeSleep": {
-    "index": 85,
+    "index": 88,
     "value": "🌙 What time do you want to go to sleep?"
   },
   "settingsScreen": {
     "title": {
-      "index": 86,
+      "index": 89,
       "value": "Settings"
     },
     "appearance": {
-      "index": 87,
+      "index": 90,
       "value": "Appearance"
     },
     "darkMode": {
-      "index": 88,
+      "index": 91,
       "value": "Dark Mode"
     },
     "useSystemTheme": {
-      "index": 89,
+      "index": 92,
       "value": "Use System Theme"
     },
     "data": {
-      "index": 90,
+      "index": 93,
       "value": "Data"
     },
     "reset": {
-      "index": 91,
+      "index": 94,
       "value": "Reset App"
     },
     "confirmReset": {
-      "index": 92,
+      "index": 95,
       "value": "Are you sure you want to reset the app? This will clear all data?"
     },
     "cancel": {
-      "index": 93,
+      "index": 96,
       "value": "Cancel"
     },
     "confirm": {
-      "index": 90,
+      "index": 97,
       "value": "Yes, Reset"
     },
     "resetSuccess": {
-      "index": 91,
+      "index": 98,
       "value": "App reset successful"
+    },
+    "sleepDetection": {
+      "index": 99,
+      "value": "Sleep Detection"
+    },
+    "autoDetectSleep": {
+      "index": 100,
+      "value": "Auto-detect sleep"
+    },
+    "inactivityThreshold": {
+      "index": 101,
+      "value": "Inactivity threshold"
+    },
+    "minutes": {
+      "index": 102,
+      "value": "minutes"
     }
   }
 }
