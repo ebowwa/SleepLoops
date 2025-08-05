@@ -201,6 +201,27 @@ If not pursuing AI stories:
 - **Minimal maintenance** - works as-is for the sleep cycle calculation use case
 - **Focus elsewhere** - put energy into projects with proven traction
 
+### NEW: CaringMind Ecosystem Integration
+
+**Latest Direction**: Instead of pivoting to AI stories, SleepLoops could become part of the CaringMind ecosystem. See [Issue #12](https://github.com/ebowwa/SleepLoops/issues/12) for detailed discussion.
+
+**The Concept**: SleepLoops provides sleep data to CaringMind AI companion, enabling:
+- Sleep-aware AI recommendations
+- Correlation between sleep and mood/productivity
+- Proactive wellbeing support based on sleep patterns
+- Privacy-first, on-device data sharing
+
+**Integration vs Consolidation Decision**:
+- **Integration** (Recommended): Keep apps separate but connected via App Groups
+  - Lower risk, faster to implement
+  - Preserves user choice and app identities
+  - Can validate concept before deeper merger
+- **Consolidation**: Merge SleepLoops into CaringMind as native feature
+  - Single app experience but higher complexity
+  - Loses SleepLoops as standalone entry point
+
+**Next Steps**: Implement basic App Group data sharing to test user interest in connected experience.
+
 **The question**: Is it worth pivoting a zero-traction app, or better to start fresh/focus on proven winners?
 
 Open to suggestions and contributions, but being realistic about market realities.
