@@ -201,28 +201,37 @@ If not pursuing AI stories:
 - **Minimal maintenance** - works as-is for the sleep cycle calculation use case
 - **Focus elsewhere** - put energy into projects with proven traction
 
-### NEW: CaringMind Ecosystem Integration
+### NEW: Unified Vision - Why Not All Three?
 
-**Latest Direction**: Instead of pivoting to AI stories, SleepLoops could become part of the CaringMind ecosystem. See [Issue #12](https://github.com/ebowwa/SleepLoops/issues/12) for detailed discussion.
+**Latest Direction**: Instead of choosing between pivots, SleepLoops can become a comprehensive sleep wellness platform. See [Issue #13](https://github.com/ebowwa/SleepLoops/issues/13) for full discussion.
 
-**The Concept**: SleepLoops provides sleep data to CaringMind AI companion, enabling:
-- Sleep-aware AI recommendations
-- Correlation between sleep and mood/productivity
-- Proactive wellbeing support based on sleep patterns
-- Privacy-first, on-device data sharing
+**The Triple Play**:
+1. **Pomodoro for Sleep** (Core Feature)
+   - 90-minute cycle optimization
+   - Automatic sleep detection
+   - Smart wake times
 
-**Integration vs Consolidation Decision**:
-- **Integration** (Recommended): Keep apps separate but connected via App Groups
-  - Lower risk, faster to implement
-  - Preserves user choice and app identities
-  - Can validate concept before deeper merger
-- **Consolidation**: Merge SleepLoops into CaringMind as native feature
-  - Single app experience but higher complexity
-  - Loses SleepLoops as standalone entry point
+2. **AI-Generated Sleep Stories** (Engagement & Monetization)
+   - Personalized bedtime stories via OpenAI
+   - Cost advantage over Calm's celebrity recordings
+   - Leverage existing [Stories repo](https://github.com/ebowwa/stories)
 
-**Next Steps**: Implement basic App Group data sharing to test user interest in connected experience.
+3. **CaringMind Integration** (Holistic Wellness)
+   - Sleep data enriches AI companion insights
+   - Bidirectional data sharing via App Groups
+   - Story personalization based on wellness profile
 
-**The question**: Is it worth pivoting a zero-traction app, or better to start fresh/focus on proven winners?
+**Why This Works**:
+- **Unique Market Position**: No competitor offers all three
+- **Natural Synergies**: Stories help you fall asleep → Cycles ensure quality sleep → CaringMind provides insights
+- **Multiple Revenue Streams**: Freemium tracking, premium stories, ecosystem benefits
+
+**Implementation Path**:
+- Phase 1: Port Stories functionality (2 weeks)
+- Phase 2: CaringMind data sharing (1 week)  
+- Phase 3: Unified experience (1 week)
+
+**The Bottom Line**: The $3.9B sleep market deserves a holistic solution. By combining these approaches, SleepLoops addresses the complete sleep journey: falling asleep, sleeping well, and waking refreshed.
 
 Open to suggestions and contributions, but being realistic about market realities.
 
